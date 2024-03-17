@@ -1,0 +1,320 @@
+{% extends "base.html" %} {% block head %}
+<link rel="stylesheet" href="/static/css/book-new.css" />
+<link rel="stylesheet" href="/static/css/contest.css" />
+<title>Contest</title>
+{% endblock %} {%block body%}
+
+<section class="mock-sec">
+  <h2 class="mock-headline">Mock Contest</h2>
+  <div class="mock-table">
+    <div class="table-header">
+      <span class="col-header">Title</span>
+      <span class="col-header">Start</span>
+      <span class="col-header">Length</span>
+      <span class="col-header"></span>
+    </div>
+     {%for con in contest%}
+      {%if con.title=="Mock Contest"%}
+    <div class="table-row">
+     
+      <span class="col-content first">{{con.title}}</span>
+      <span class="col-content">
+        <div class="timer-container">
+        <div style="color: var(--color-accent);">Anytime</div></div>
+        </span>
+      <span class="col-content">As much as you Want</span>
+      <span class="col-content last">
+            <button id="register-button" class="register-btn">Register</button>
+  <button style="display: none;" class="register-btn" id="enter-contest-button">Enter Contest</button></div>
+        
+          </span>
+          
+  </div>
+  {%endif%}
+          {%endfor%}
+</section>
+<section class="upcoming-sec">
+  <h2 class="upcoming-headline">Upcoming Contest</h2>
+  <div class="upcoming-table">
+    <div class="table-header">
+      <span class="col-header">Title</span>
+      <span class="col-header">Start</span>
+      <span class="col-header">Length</span>
+      <span class="col-header"></span>
+    </div>
+    <div class="table-row">
+      {%for con in contest%}
+      {%if con.title!="Mock Contest"%}
+     <span class="col-content first">{{con.title}}</span>
+      <span class="col-content">
+        <div class="timer-container">
+        <div style="color: var(--color-accent);" id="countdown_to_end"></div></div>
+        </span>
+      <span class="col-content">{{con.start_time}}</span>
+      <span class="col-content last">
+            <button id="register-button" class="register-btn">Register</button>
+       <button style="display: none;" class="register-btn" id="enter-contest-button">Enter Contest</button></div>
+        
+          </span>
+        {%endif%}
+        {%endfor%}
+   
+</div>
+
+</section>
+
+
+  <form action="#" id="main_contest_form" style="display: none;" class="form">
+    <h2 class="text-center">Contest</h2>
+    <!-- Progress bar -->
+    <div class="progressbar">
+      <div class="progress" id="progress"></div>
+
+      <div class="progress-step progress-step-active" data-title="Bio"></div>
+      <div class="progress-step" data-title="Hist"></div>
+      <div class="progress-step" data-title="Chem"></div>
+      <div class="progress-step" data-title="Geo"></div>
+      <div class="progress-step" data-title="Result"></div>
+    </div>
+
+    <!-- Steps -->
+    <div class="form-step form-step-active">
+      <div>
+        <div id="biology-quiz-form">
+          <div id="biology-quiz-container"></div>
+
+          <div id="biology-results" style="display: none"></div>
+          <button type="button" class="btn" id="biology-submit-button">
+            Submit Answers<i class="fa-solid fa-square-arrow-up-right"></i>
+          </button>
+        </div>
+      </div>
+
+      <div id="bio-next" style="display: none;" class="">
+        <a href="#"  class="btn btn-next width-50 ml-auto"
+          >Next
+          <i class="fa-solid fa-hand-point-right"></i>
+        </a>
+      </div>
+    </div>
+
+    <div class="form-step">
+      <h4 class="myH4">History</h4>
+
+      <div id="history-quiz-form">
+        <div id="history-quiz-container"></div>
+
+        <div id="history-results" style="display: none"></div>
+        <button
+          type="button"
+          class="btn submit-Answer-btn"
+          id="history-submit-button"
+        >
+          Submit Answers<i class="fa-solid fa-square-arrow-up-right"></i>
+        </button>
+      </div>
+      <!-- <h4 class="myH4">History</h4> -->
+
+      <div class="btns-group">
+        <a href="#" class="btn btn-prev"
+          ><i class="fa-solid fa-hand-point-left"></i>Previous</a
+        >
+        <a id="hist-next" style="display: none;" href="#" class="btn btn-next"
+          >Next<i class="fa-solid fa-hand-point-right"></i
+        ></a>
+      </div>
+    </div>
+
+    <div class="form-step">
+      <h4 class="myH4">Chemistry</h4>
+
+      <div id="chemistry-quiz-form">
+        <div id="chemistry-quiz-container"></div>
+
+        <div id="chemistry-results" style="display: none"></div>
+        <button type="button" class="btn" id="chemistry-submit-button">
+          Submit Answers <i class="fa-solid fa-square-arrow-up-right"></i>
+        </button>
+      </div>
+      <!-- <h4 class="myH4">Chemistry</h4> -->
+
+      <div class="btns-group">
+        <a  href="#" class="btn btn-prev"
+          ><i class="fa-solid fa-hand-point-left"></i>Previous</a
+        >
+        <a href="#" style="display: none" class="btn btn-prev"
+          >Submit<i class="fa-solid fa-square-arrow-up-right"></i
+        ></a>
+        <a id="chem-next" style="display: none;" href="#" class="btn btn-next"
+          >Next<i class="fa-solid fa-hand-point-right"></i
+        ></a>
+      </div>
+    </div>
+    <div class="form-step">
+      <div id="geography-quiz-form">
+        <div id="geography-quiz-container"></div>
+
+        <div id="geography-results" style="display: none"></div>
+        <button type="button" class="btn" id="geography-submit-button">
+          Submit Answers<i class="fa-solid fa-square-arrow-up-right"></i>
+        </button>
+      </div>
+
+      <div class="btns-group">
+        <a  href="#" class="btn btn-prev"
+          ><i class="fa-solid fa-hand-point-left"></i>Previous</a
+        >
+        <a id="geo-next" style="display: none;" href="#" onclick="totalpointdisp()" class="btn btn-next"
+          >Next<i class="fa-solid fa-hand-point-right"></i
+        ></a>
+      </div>
+    </div>
+    <div class="form-step">
+      <div class="input-group">
+        <div id="bio-score"></div>
+        <div id="geo-score"></div>
+        <div id="hist-score"></div>
+        <div id="chem-score"></div>
+        <div id="total-score"></div>
+      </div>
+      <div class="btns-group">
+        <a href="#" class="btn btn-prev"
+          ><i class="fa-solid fa-hand-point-left"></i>Previous</a
+        >
+        <button type="button"  id="finish_up_contest"  class="btn">Finish up</button>
+
+
+
+
+      </div> 
+    </div>
+  </form>
+  
+  <script>
+    // Changing subjects
+    const prevBtns = document.querySelectorAll(".btn-prev");
+    const nextBtns = document.querySelectorAll(".btn-next");
+    const progress = document.getElementById("progress");
+    const formSteps = document.querySelectorAll(".form-step");
+    const progressSteps = document.querySelectorAll(".progress-step");
+    let formStepsNum = 0;
+
+    nextBtns.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        formStepsNum++;
+        updateFormSteps();
+        updateProgressbar();
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      });
+    });
+
+    prevBtns.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        formStepsNum--;
+        updateFormSteps();
+        updateProgressbar();
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      });
+    });
+
+    function updateFormSteps() {
+      formSteps.forEach((formStep) => {
+        formStep.classList.contains("form-step-active") &&
+          formStep.classList.remove("form-step-active");
+      });
+
+      formSteps[formStepsNum].classList.add("form-step-active");
+    }
+
+    function updateProgressbar() {
+      progressSteps.forEach((progressStep, idx) => {
+        if (idx < formStepsNum + 1) {
+          progressStep.classList.add("progress-step-active");
+        } else {
+          progressStep.classList.remove("progress-step-active");
+        }
+      });
+
+      const progressActive = document.querySelectorAll(".progress-step-active");
+
+      progress.style.width =
+        ((progressActive.length - 1) / (progressSteps.length - 1)) * 100 + "%";
+    }
+    // changin subjects end here
+
+    // Function to update the countdown timer
+   
+    function updateCountdown() {
+      const contestEndTime = new Date("{{ contest_end_time }}").getTime(); // Replace with your back-end value
+      const contestStartTime = new Date("{{ contest_start_time }}").getTime(); // Replace with your back-end value
+      const now = new Date().getTime();
+    
+      const timeRemaining = contestEndTime - now;
+      var timeUntilStart = contestStartTime - now;
+      var timeUntilEnd = contestEndTime - now;
+      if (timeUntilEnd <= 0) {
+        // Time's up!
+        const countdownDiv = document.getElementById("countdown_to_end");
+        
+        countdownDiv.innerHTML = "Time's up!";
+      //  var newRoute = "/finish_contest";
+    
+      // Redirect to the new route
+     // window.location.href = newRoute;
+     finish_contest();
+    
+        showResults(
+        resultsContainer,
+        biology_quizData,
+        bio_score,
+        "Biology",
+        biology_score
+      );
+      submitButton.style.display = "none";
+      } 
+      else if (timeUntilStart > 0) {
+        // Contest has not started yet
+        const countdownDiv = document.getElementById("countdown_to_end");
+        var days = Math.floor(timeUntilStart / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((timeUntilStart % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((timeUntilStart % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((timeUntilStart % (1000 * 60)) / 1000);
+      
+        // Display the countdown until the start of the contest
+        countdownDiv.innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+      
+      }
+      else {
+        // Contest is in progress
+       
+    
+        const hours = Math.floor(timeUntilEnd / (1000 * 60 * 60));
+        const minutes = Math.floor((timeUntilEnd % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((timeUntilEnd % (1000 * 60)) / 1000);
+    
+        const countdownDiv = document.getElementById("countdown_to_end");
+        countdownDiv.innerHTML = hours + "h " + minutes + "m " + seconds + "s ";
+      }
+    }
+    
+    // Update the countdown timer every second
+    setInterval(updateCountdown, 1000);
+    
+    // Call the function immediately to display the countdown
+    updateCountdown();
+
+// saving data
+   
+
+
+  </script>
+
+  <script src="/static/js/contest.js"></script>
+
+{%endblock%} 

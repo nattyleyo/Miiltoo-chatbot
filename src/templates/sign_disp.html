@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registration Form</title>
+</head>
+<body>
+    <h1>Registration Form</h1>
+
+
+
+    {% if error_message %}
+    <p>{{ error_message }}</p>
+    {% endif %}
+
+    <h2>List of Users</h2>
+    <ul>
+        {% for user in users %}
+            <li>{{ user.full_name }} - {{ user.username }}-{{user.password}}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
