@@ -2,23 +2,9 @@
 
 ![Miiltoo Logo](src/static/img.jpg)
 
-## Team Information
+## Project Information
 
 **Project Title:** Miiltoo: Knowledge Companion
-
-**Team Name:** Miiltoo
-
-**Team Captain Name:** Abdulmajid Awol
-
-**Team Members:**
-
-| No. | Name             | Email              | Phone         | Country   |
-| --- | ---------------- | ------------------ | ------------- | --------- |
-| 1.  | Abdulmajid Awol  | maajidawol@gmail.com| +251993174585 | Ethiopia  |
-| 2.  | Ararsa Derese    | ararsaderese6@gmail.com | +251946543376 | Ethiopia |
-| 3.  | Abel Bekana      | abelbekanagot@gmail.com | +251966871742 | Ethiopia |
-| 4.  | Abigiya Getachew | Bigu160715@gmail.com    | +251926815050 | Ethiopia |
-| 5.  | Natnael Meseret  | natnaelmeseret5@gmail.com | +251987158100 | Ethiopia |
 
 ### Core Features
 
