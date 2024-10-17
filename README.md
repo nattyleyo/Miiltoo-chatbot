@@ -1,6 +1,6 @@
 # Project README - Miiltoo: Knowledge Companion
 
-![Miiltoo Logo](src/static/img.jpg)
+![Miiltoo Logo](src/static/img.svg)
 
 ## Project Information
 
@@ -43,8 +43,7 @@
 
 - Git (version control)
 
-
-## Dependencies 
+## Dependencies
 
 ### Data Sets
 
@@ -52,11 +51,10 @@
 
 **Data Integration:** We integrated the data into the model using a Python library called LangChain, which allows
 
- embeddings to pretrained models.
+embeddings to pretrained models.
 
 ### APIs
 
 **Model Integration:** We integrated OpenAI’s gpt-3 through the LangChain library.
 
-
-*This README document provides an overview of the Miiltoo project, its objectives, roadmap, features, technology stack, and potential challenges.*
+_This README document provides an overview of the Miiltoo project, its objectives, roadmap, features, technology stack, and potential challenges._
